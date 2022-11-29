@@ -6,9 +6,9 @@ import { shipFactory } from './ship-factory.mjs'
 // and determines if there is a hit, the sends hit
 // function to correct ship - done
 
-// records all attacks and whether hits or not
+// records all attacks and whether hits or not - done
 
-// report whether all ships are sunk or not
+// report whether all ships are sunk or not - done
 
 export function gameboardFactory () {
   const allShips = []
@@ -50,13 +50,17 @@ export function gameboardFactory () {
       return attacksReceived
     },
     areShipsSunk: function () {
-
+      for (const index in allShips) {
+        const currentShip = allShips[index].ship
+        if (!currentShip.sunk) { return false }
+      }
+      return true
     },
     getAllShips: function () {
       return allShips
     },
     getAttacksReceived: function () {
-
+      return attacksReceived
     }
   }
   return gameboardObject
